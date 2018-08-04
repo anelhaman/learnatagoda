@@ -15,17 +15,17 @@ dotnet_csproj:
   informational_version: '{version}'
 before_build:
 - ps: >-
-    cd stage1/src
+    cd Client
 
-    yarn install
+    npm install
 
-    yarn webpack --config webpack.config.vendor.js
+    dotnet build
 
-    yarn webpack
+    dotnet run
 
     dotnet restore
 build:
-  project: stage1\src\stage1.csproj
+  project: teachadagoda.csproj
   publish_aspnet_core: true
   verbosity: minimal
 notifications:
